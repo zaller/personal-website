@@ -8,18 +8,23 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/footer'
 import { baseUrl } from './sitemap'
 
+
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Next.js Portfolio Starter',
-    template: '%s | Next.js Portfolio Starter',
+    default: 'Isabel Zaller',
+    template: '%s | Isabel Zaller',
   },
   description: 'This is my portfolio.',
+  icons: {
+	icon: '/favicon.ico',
+	shortcut: '/favicon.ico', // Some browsers look for this
+  },
   openGraph: {
-    title: 'My Portfolio',
+    title: 'Isabel Zaller',
     description: 'This is my portfolio.',
     url: baseUrl,
-    siteName: 'My Portfolio',
+    siteName: 'Isabel Zaller',
     locale: 'en_US',
     type: 'website',
   },
@@ -47,7 +52,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={cx(
-        'text-black bg-white dark:text-white dark:bg-black',
+        'text-black bg-white', /* dark:text-white dark:bg-black ',*/
         GeistSans.variable,
         GeistMono.variable
       )}
