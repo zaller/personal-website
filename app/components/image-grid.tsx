@@ -39,52 +39,5 @@ const ImageCard = ({
   );
 };
 
-// Grid component using ImageCard
-const ImageCardGrid = ({ 
-  cards = [], 
-  cardsPerRow = 3,
-  width,
-  className = ""
-}) => {
-  const [activeCardIndex, setActiveCardIndex] = useState(null);
-  const safeCards = Array.isArray(cards) ? cards : [];
-  
-  const gridCols = {
-    1: 'grid-cols-1',
-    2: 'grid-cols-1 sm:grid-cols-2',
-    3: 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3',
-    4: 'grid-cols-1 sm:grid-cols-2 md:grid-cols-4',
-    5: 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5',
-    6: 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6'
-  };
 
-  const handleCardClick = (index) => {
-    setActiveCardIndex(activeCardIndex === index ? null : index);
-  };
-
-  const gridClassName = gridCols[cardsPerRow] || gridCols[3];
-  const style = width ? { width: typeof width === 'number' ? `${width}px` : width } : {};
-
-  if (safeCards.length === 0) {
-    return null;
-  }
-
-  return (
-    <div 
-      className={`grid ${gridClassName} gap-8 ${className}`}
-      style={style}
-    >
-      {safeCards.map((card, index) => (
-        <ImageCard
-          key={index}
-          {...card}
-          isActive={activeCardIndex === index}
-          onClick={() => handleCardClick(index)}
-        />
-      ))}
-    </div>
-  );
-};
-
-export { ImageCard, ImageCardGrid };
-export default ImageCardGrid;
+export default ImageCard;
